@@ -31,7 +31,15 @@ public class BrickLayout {
     public void doOneBrick() {
         if (bricks.size() != 0) {
             Brick b = bricks.remove(0);
-            // put this brick into the 2D array
+            int height = brickLayout.length - 1;
+            for (int i = b.getStart(); i <= b.getEnd(); i++) {
+                if (checkBrickSpot(height, i)) {
+                    height--;
+                }
+            }
+            for (int i = b.getStart(); i <= b.getEnd(); i++) {
+                brickLayout[height][i] = 1;
+            }
         }
     }
 
